@@ -1,0 +1,53 @@
+<!--
+    Name: Cai Bowen
+    Student ID: S1580648
+    BIT235 Assessment 2 - Part A
+    Redesigned error page with an inline SVG warning icon and a retry form.
+-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access Denied</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="auth-shell">
+        <div class="brand-panel">
+            <div class="logo">WIKI</div>
+            <div class="tagline">The supplied credentials could not be verified.</div>
+        </div>
+
+        <div class="form-panel">
+            <div class="result-banner failure">
+                <!-- Inline red warning icon. -->
+                <div class="result-icon bad">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none"
+                         stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="12" y1="8" x2="12" y2="13"></line>
+                        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                        <circle cx="12" cy="12" r="10"></circle>
+                    </svg>
+                </div>
+                <h1>Access Denied</h1>
+                <p th:text="${errorMessage}">Invalid username or password.</p>
+                <span class="attempt-note">Failed attempts: <span th:text="${attempts}">1</span></span>
+
+                <!-- Retry form. -->
+                <form th:action="@{/login}" th:object="${loginRequest}" method="post">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" th:field="*{username}"
+                           placeholder="Type your username" required>
+
+                    <label for="password">Password</label>
+                    <input type="password" id="password" th:field="*{password}"
+                           placeholder="Type your password" required>
+
+                    <button type="submit" class="login-button">RETRY</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

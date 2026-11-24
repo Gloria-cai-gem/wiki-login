@@ -1,0 +1,248 @@
+/*
+ * Name: Cai Bowen
+ * Student ID: S1580648
+ * BIT235 Assessment 2 - Part A
+ * Redesigned split-screen style: dark emerald brand panel + amber actions.
+ */
+
+/* Border-box sizing and a custom font stack for every element. */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Trebuchet MS", "Segoe UI", Arial, sans-serif;
+}
+
+/* Warm off-white page background instead of the original plain grey. */
+body {
+    background-color: #f4f1ea;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+}
+
+/* Two-column shell: brand panel on the left, form on the right. */
+.auth-shell {
+    display: flex;
+    width: 100%;
+    max-width: 880px;
+    min-height: 520px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 18px 45px rgba(15, 60, 50, 0.25);
+}
+
+/* Left brand panel with a dark emerald gradient and decorative circles. */
+.brand-panel {
+    flex: 1;
+    background: linear-gradient(155deg, #0b3d3d 0%, #14532d 55%, #166534 100%);
+    color: #fef3c7;
+    padding: 48px 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Soft decorative circles sitting behind the brand text. */
+.brand-panel::before,
+.brand-panel::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(217, 119, 6, 0.18);
+}
+.brand-panel::before {
+    width: 180px;
+    height: 180px;
+    top: -60px;
+    right: -50px;
+}
+.brand-panel::after {
+    width: 120px;
+    height: 120px;
+    bottom: -30px;
+    left: -40px;
+}
+
+/* Brand word mark. */
+.brand-panel .logo {
+    font-size: 34px;
+    letter-spacing: 6px;
+    font-weight: bold;
+    margin-bottom: 14px;
+    position: relative;
+}
+
+/* Tagline under the logo. */
+.brand-panel .tagline {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #d1fae5;
+    position: relative;
+}
+
+/* Right panel that hosts the form or result message. */
+.form-panel {
+    flex: 1.15;
+    background-color: #ffffff;
+    padding: 48px 44px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Panel heading. */
+.form-panel h1 {
+    color: #0b3d3d;
+    font-size: 24px;
+    margin-bottom: 6px;
+}
+
+/* Sub-heading text. */
+.form-panel .subtitle {
+    color: #8a7f6d;
+    font-size: 13px;
+    margin-bottom: 28px;
+}
+
+/* Labels above each field. */
+label {
+    display: block;
+    color: #3f4a45;
+    font-size: 13px;
+    font-weight: bold;
+    margin: 18px 0 7px;
+}
+
+/* Rounded light inputs with an amber focus state. */
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1.5px solid #d8d2c4;
+    border-radius: 10px;
+    background-color: #faf8f3;
+    font-size: 14px;
+    color: #2b2b2b;
+    transition: border-color 0.2s, background-color 0.2s;
+}
+
+/* Amber highlight while editing. */
+input[type="text"]:focus,
+input[type="password"]:focus {
+    outline: none;
+    border-color: #d97706;
+    background-color: #ffffff;
+}
+
+/* Pill-shaped amber action button. */
+.login-button {
+    width: 100%;
+    margin-top: 30px;
+    padding: 13px;
+    border: none;
+    border-radius: 999px;
+    background: linear-gradient(to right, #d97706, #b45309);
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s;
+}
+
+/* Lift effect on hover. */
+.login-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(180, 83, 9, 0.35);
+}
+
+/* Result banner shared by the welcome and error pages. */
+.result-banner {
+    text-align: center;
+}
+
+/* Round icon holder. */
+.result-icon {
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 38px;
+    color: #ffffff;
+}
+
+/* Green icon for success. */
+.result-icon.ok {
+    background: linear-gradient(135deg, #16a34a, #15803d);
+}
+
+/* Red icon for failure. */
+.result-icon.bad {
+    background: linear-gradient(135deg, #dc2626, #991b1b);
+}
+
+/* Result heading colours. */
+.result-banner h1 {
+    font-size: 23px;
+    margin-bottom: 10px;
+}
+.result-banner.success h1 {
+    color: #15803d;
+}
+.result-banner.failure h1 {
+    color: #b91c1c;
+}
+
+/* Result body text. */
+.result-banner p {
+    color: #6b6256;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 14px;
+}
+
+/* Attempt counter note. */
+.attempt-note {
+    display: inline-block;
+    margin-top: 6px;
+    padding: 5px 12px;
+    border-radius: 999px;
+    background-color: #fef3c7;
+    color: #92400e;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Pill link used for navigation and logout. */
+.pill-link {
+    display: inline-block;
+    margin-top: 22px;
+    padding: 10px 26px;
+    border-radius: 999px;
+    background-color: #0b3d3d;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+}
+.pill-link:hover {
+    background-color: #14532d;
+}
+
+/* Stack the two panels vertically on narrow screens. */
+@media (max-width: 720px) {
+    .auth-shell {
+        flex-direction: column;
+    }
+    .brand-panel {
+        padding: 32px;
+    }
+}

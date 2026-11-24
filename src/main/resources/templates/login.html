@@ -1,0 +1,45 @@
+<!--
+    Name: Cai Bowen
+    Student ID: S1580648
+    BIT235 Assessment 2 - Part A
+    Redesigned split-screen login page.
+-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wiki Admin Sign In</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="auth-shell">
+        <!-- Left brand panel. -->
+        <div class="brand-panel">
+            <div class="logo">WIKI</div>
+            <div class="tagline">
+                Administrator access portal.<br>
+                Sign in to manage articles, categories and user comments.
+            </div>
+        </div>
+
+        <!-- Right sign-in form. -->
+        <div class="form-panel">
+            <h1>Sign In</h1>
+            <div class="subtitle">Please enter your administrator credentials</div>
+
+            <form th:action="@{/login}" th:object="${loginRequest}" method="post">
+                <label for="username">Username</label>
+                <input type="text" id="username" th:field="*{username}"
+                       placeholder="Type your username" required>
+
+                <label for="password">Password</label>
+                <input type="password" id="password" th:field="*{password}"
+                       placeholder="Type your password" required>
+
+                <button type="submit" class="login-button">ACCESS PORTAL</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

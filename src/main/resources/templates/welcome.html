@@ -1,0 +1,40 @@
+<!--
+    Name: Cai Bowen
+    Student ID: S1580648
+    BIT235 Assessment 2 - Part A
+    Redesigned welcome page with an inline SVG check icon.
+-->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access Granted</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="auth-shell">
+        <div class="brand-panel">
+            <div class="logo">WIKI</div>
+            <div class="tagline">Authentication completed successfully.</div>
+        </div>
+
+        <div class="form-panel">
+            <div class="result-banner success">
+                <!-- Inline green check icon. -->
+                <div class="result-icon ok">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none"
+                         stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                </div>
+                <h1>Access Granted</h1>
+                <p>Welcome back, <strong th:text="${username}">administrator</strong>.<br>
+                   You are now connected to the Wiki Admin Console.</p>
+                <!-- Logout returns the visitor to the sign-in page. -->
+                <a th:href="@{/login}" class="pill-link">LOG OUT</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
