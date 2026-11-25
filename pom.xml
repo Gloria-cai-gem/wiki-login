@@ -3,14 +3,13 @@
     Name: Cai Bowen
     Student ID: S1580648
     BIT235 Assessment 2 - Part A
-    Maven build file for the Wiki Login Spring Boot application.
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- Parent starter provides dependency versions and default plugin configuration. -->
+    <!-- spring boot parent, manages the dependency versions -->
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -18,26 +17,25 @@
         <relativePath/>
     </parent>
 
-    <!-- Maven coordinates that uniquely identify this project. -->
     <groupId>edu.melbournepolytechnic</groupId>
     <artifactId>wiki-login</artifactId>
     <version>1.0.0</version>
     <name>wiki-login</name>
-    <description>BIT235 Assessment 2 Part A - Wiki Administrator Login</description>
+    <description>BIT235 Assessment 2 Part A - Wiki Login</description>
 
     <properties>
-        <!-- Java 21 matches the JDK installed in the laboratory environment. -->
+        <!-- using java 21 -->
         <java.version>21</java.version>
     </properties>
 
     <dependencies>
-        <!-- Spring MVC web starter: embedded Tomcat, @Controller support and form handling. -->
+        <!-- web starter for mvc and embedded tomcat -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <!-- Thymeleaf starter renders the HTML login, welcome and error templates. -->
+        <!-- thymeleaf for the html pages -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
@@ -46,8 +44,7 @@
 
     <build>
         <plugins>
-            <!-- Spring Boot Maven plugin lets the project run with 'mvn spring-boot:run'
-                 and packages it as an executable jar. -->
+            <!-- lets us run with mvn spring-boot:run -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>

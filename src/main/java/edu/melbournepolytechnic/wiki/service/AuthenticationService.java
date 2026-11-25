@@ -2,43 +2,31 @@
  * Name: Cai Bowen
  * Student ID: S1580648
  * BIT235 Assessment 2 - Part A
- * Business logic layer for authentication.
  */
 package edu.melbournepolytechnic.wiki.service;
 
 import edu.melbournepolytechnic.wiki.repository.UserCredentialRepository;
 import org.springframework.stereotype.Service;
 
-/**
- * Service component that normalises user input and delegates the
- * credential comparison to the repository layer.
- */
+// does the login check between controller and repository
 @Service
 public class AuthenticationService {
 
-    // Final reference injected once through the constructor.
-    private final UserCredentialRepository credentialRepository;
+    // repository that holds the valid login
+    private UserCredentialRepository repo;
 
-    /**
-     * Constructor-based dependency injection.
-     * @param credentialRepository Spring-managed repository bean
-     */
-    public AuthenticationService(UserCredentialRepository credentialRepository) {
-        this.credentialRepository = credentialRepository;
+    // spring injects the repository here
+    public AuthenticationService(UserCredentialRepository repo) {
+        this.repo = repo;
     }
 
-    /**
-     * Normalises and verifies the submitted credential.
-     * @param rawName username typed into the form
-     * @param rawSecret password typed into the form
-     * @return true when the cleaned pair matches the stored credential
-     */
-    public boolean login(String rawName, String rawSecret) {
-        // Trim surrounding spaces so accidental whitespace does not fail a valid login.
-        String cleanName = rawName == null ? "" : rawName.trim();
-        // Apply the same cleaning to the password.
-        String cleanSecret = rawSecret == null ? "" : rawSecret.trim();
-        // Forward the cleaned values to the repository for the final comparison.
-        return credentialRepository.checkCredential(cleanName, cleanSecret);
+    // clean the input then check it
+    public boolean checkLogin(String username, String password) {
+        // stop null values from breaking the comparison
+        if (username == null || password == null) {
+            return false;
+        }
+        // trim spaces and let the repository compare
+        return repo.match(username.trim(), password.trim());
     }
 }

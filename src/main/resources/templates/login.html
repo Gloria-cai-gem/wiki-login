@@ -2,7 +2,6 @@
     Name: Cai Bowen
     Student ID: S1580648
     BIT235 Assessment 2 - Part A
-    Redesigned split-screen login page.
 -->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
@@ -14,19 +13,19 @@
 </head>
 <body>
     <div class="auth-shell">
-        <!-- Left brand panel. -->
+        <!-- left brand side -->
         <div class="brand-panel">
             <div class="logo">WIKI</div>
             <div class="tagline">
-                Administrator access portal.<br>
-                Sign in to manage articles, categories and user comments.
+                Admin access portal.<br>
+                Sign in to manage articles and comments.
             </div>
         </div>
 
-        <!-- Right sign-in form. -->
+        <!-- login form -->
         <div class="form-panel">
             <h1>Sign In</h1>
-            <div class="subtitle">Please enter your administrator credentials</div>
+            <div class="subtitle">Enter your admin details</div>
 
             <form th:action="@{/login}" th:object="${loginRequest}" method="post">
                 <label for="username">Username</label>

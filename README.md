@@ -21,12 +21,11 @@ mvn spring-boot:run
 
 Then open http://localhost:8080/login in a browser.
 
-## Custom features
+## Notes
 
-- Trimmed, null-safe input handling in the service layer
-- Failed attempt counter stored in the visitor session
+- Input is trimmed and null-safe in the service layer
 - Logout link on the welcome page
-- Redesigned emerald/amber UI with inline SVG status icons
+- Custom split-screen UI with SVG status icons
 
 ## Layers
 
