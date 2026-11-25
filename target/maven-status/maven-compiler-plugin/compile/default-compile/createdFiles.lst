@@ -1,5 +1,0 @@
-edu\melbournepolytechnic\wiki\model\LoginRequest.class
-edu\melbournepolytechnic\wiki\repository\UserCredentialRepository.class
-edu\melbournepolytechnic\wiki\WikiApplication.class
-edu\melbournepolytechnic\wiki\controller\LoginController.class
-edu\melbournepolytechnic\wiki\service\AuthenticationService.class
